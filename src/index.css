@@ -6,7 +6,7 @@
 
   /* :root[data-theme="light"] */
   :root {
-    --text: #0d0c0d;
+    --textPrimary: #0d0c0d;
     --background: #f5f2f7;
     --primary: #8041a4;
     --secondary: #b3b8c7;
@@ -16,7 +16,7 @@
 
   /* :root[data-theme="dark"] */
   .dark {
-    --text: #f3f2f3;
+    --textPrimary: #f3f2f3;
     --background: #0b080d;
     --primary: #995bbe;
     --secondary: #383d4c;
@@ -25,12 +25,8 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
+/* @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background;
   }
-}
+} */
