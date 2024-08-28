@@ -8,9 +8,10 @@
   :root {
     --textPrimary: #0d0c0d;
     --background: #f5f2f7;
-    --primary: #8041a4;
+    --primary: #A5AAB8;
     --secondary: #b3b8c7;
     --accent: #7213f6;
+    --accent2: #8041a4;
     --destructive: #F79414;
   }
 
@@ -18,9 +19,10 @@
   .dark {
     --textPrimary: #f3f2f3;
     --background: #0b080d;
-    --primary: #995bbe;
+    --primary: #262933;
     --secondary: #383d4c;
     --accent: #6709ec;
+    --accent2: #995bbe;
     --destructive: #F79414;
   }
 }
