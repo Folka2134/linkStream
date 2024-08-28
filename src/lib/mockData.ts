@@ -40,27 +40,27 @@ export const groups = [
 
 export const users = [
   {
-    id: 1,
+    id: "1",
     userName: "John Doe",
-    image: "https://via.placeholder.com/30",
+    userImage: "https://via.placeholder.com/30",
     status: "online",
   },
   {
-    id: 2,
+    id: "2",
     userName: "Jane Doe",
-    image: "https://via.placeholder.com/30",
+    userImage: "https://via.placeholder.com/30",
     status: "offline",
   },
   {
-    id: 3,
+    id: "3",
     userName: "Jack Smith",
-    image: "https://via.placeholder.com/30",
+    userImage: "https://via.placeholder.com/30",
     status: "online",
   },
   {
-    id: 4,
+    id: "4",
     userName: "Tricks",
-    image: "https://via.placeholder.com/30",
+    userImage: "https://via.placeholder.com/30",
     status: "offline",
   },
 ];
