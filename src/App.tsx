@@ -4,18 +4,21 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { ChatProvider } from "./context/ChatContext";
 import { GroupProvider } from "./context/GroupContext";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
     <GroupProvider>
       <ChatProvider>
-        <div className="">
-          <Header />
-          <div className="flex h-screen w-screen">
-            <Nav />
-            <ActiveWindow />
+        <UserProvider>
+          <div className="">
+            <Header />
+            <div className="flex h-screen w-screen">
+              <Nav />
+              <ActiveWindow />
+            </div>
           </div>
-        </div>
+        </UserProvider>
       </ChatProvider>
     </GroupProvider>
   );
