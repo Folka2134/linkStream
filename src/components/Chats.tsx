@@ -1,30 +1,11 @@
 import { useChat } from "@/hooks/useChat";
-import { chats, currentUser, users } from "@/lib/mockData";
-import { useEffect, useState } from "react";
+import { useUser } from "@/hooks/useUser";
+import { chats, currentUser } from "@/lib/mockData";
+import { useState } from "react";
 
 const Chats = () => {
   const { setSelectedChatId } = useChat();
-  const [userMap, setUserMap] = useState<{
-    [key: string]: { username: string; userImage: string };
-  }>({});
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      // Simulating fetching user data by creating a map from the mock data
-      const map: { [key: string]: { username: string; userImage: string } } =
-        {};
-      users.forEach((user) => {
-        // Convert user.id to a string
-        map[user.id.toString()] = {
-          username: user.userName,
-          userImage: user.image,
-        };
-      });
-      setUserMap(map);
-    };
-
-    fetchUserData();
-  }, []);
+  const { userMap } = useUser();
 
   const getChatDisplayData = (chat: any) => {
     if (userMap) {
@@ -56,10 +37,10 @@ const Chats = () => {
                 <div className="flex items-center gap-2">
                   <img
                     src={chatData.userImage}
-                    alt={chatData.username}
+                    alt={chatData.userName}
                     className="h-10 w-10 rounded-full"
                   />
-                  <p>{chatData.username}</p>
+                  <p>{chatData.userName}</p>
                 </div>
               )}
             </li>
@@ -71,3 +52,25 @@ const Chats = () => {
 };
 
 export default Chats;
+
+// const [userMap, setUserMap] = useState<{
+//   [key: string]: { userName: string; userImage: string };
+// }>({});
+
+// useEffect(() => {
+//   const fetchUserData = async () => {
+//     // Simulating fetching user data by creating a map from the mock data
+//     const map: { [key: string]: { userName: string; userImage: string } } =
+//       {};
+//     users.forEach((user) => {
+//       // Convert user.id to a string
+//       map[user.id] = {
+//         userName: user.userName,
+//         userImage: user.userImage,
+//       };
+//     });
+//     setUserMap(map);
+//   };
+
+//   fetchUserData();
+// }, []);
