@@ -6,7 +6,7 @@ const ActiveWindow = () => {
   const { selectedGroup } = useGroup();
 
   return (
-    <div className="w-full rounded-tl-xl bg-secondary p-3">
+    <div className="w-full rounded-tl-2xl bg-secondary">
       {selectedGroup === "Direct Messages" ? (
         <DirectMessage />
       ) : (
