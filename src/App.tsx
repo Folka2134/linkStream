@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { ChatProvider } from "./context/ChatContext";
 import { GroupProvider } from "./context/GroupContext";
+import { MessageProvider } from "./context/MessageContext";
 import { UserProvider } from "./context/UserContext";
 
 function App() {
@@ -11,13 +12,15 @@ function App() {
     <GroupProvider>
       <ChatProvider>
         <UserProvider>
-          <div className="">
-            <Header />
-            <div className="flex h-screen w-screen">
-              <Nav />
-              <ActiveWindow />
+          <MessageProvider>
+            <div className="">
+              <Header />
+              <div className="flex h-screen w-screen">
+                <Nav />
+                <ActiveWindow />
+              </div>
             </div>
-          </div>
+          </MessageProvider>
         </UserProvider>
       </ChatProvider>
     </GroupProvider>
