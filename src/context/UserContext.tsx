@@ -4,7 +4,7 @@ import { createContext, useState, useEffect } from "react";
 export interface UserContextInterface {
   userMap: UserMap;
   status: String;
-  selectedUserId: String | null;
+  selectedUserId: string | undefined;
   setSelectedUserId: Function;
 }
 
@@ -28,7 +28,9 @@ export const UserContext = createContext<UserContextInterface | undefined>(
 export const UserProvider = ({ children }: any) => {
   const [userMap, setUserMap] = useState<UserMap>({});
   const [status, setStatus] = useState("idle");
-  const [selectedUserId, setSelectedUserId] = useState<String | null>(null);
+  const [selectedUserId, setSelectedUserId] = useState<string | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     const fetchUsers = async () => {
