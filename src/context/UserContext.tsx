@@ -1,7 +1,13 @@
 import { users } from "@/lib/mockData";
 import { createContext, useState, useEffect } from "react";
 
-// Define the User interface
+export interface UserContextInterface {
+  userMap: UserMap;
+  status: String;
+  selectedUserId: String | null;
+  setSelectedUserId: Function;
+}
+
 export interface User {
   id: string;
   userName: string;
@@ -15,14 +21,14 @@ type UserMap = {
 };
 
 // Create the UserContext with a default empty map and status
-export const UserContext = createContext<{ userMap: UserMap; status: string }>({
-  userMap: {},
-  status: "idle",
-});
+export const UserContext = createContext<UserContextInterface | undefined>(
+  undefined,
+);
 
 export const UserProvider = ({ children }: any) => {
   const [userMap, setUserMap] = useState<UserMap>({});
   const [status, setStatus] = useState("idle");
+  const [selectedUserId, setSelectedUserId] = useState<String | null>(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -48,7 +54,9 @@ export const UserProvider = ({ children }: any) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ userMap, status }}>
+    <UserContext.Provider
+      value={{ userMap, status, selectedUserId, setSelectedUserId }}
+    >
       {children}
     </UserContext.Provider>
   );
