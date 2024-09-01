@@ -1,19 +1,23 @@
 import { useChat } from "@/hooks/useChat";
 import { useUser } from "@/hooks/useUser";
 import { chats, currentUser } from "@/lib/mockData";
-import { useState } from "react";
 
 const Chats = () => {
   const { setSelectedChatId } = useChat();
-  const { userMap } = useUser();
+  const { userMap, setSelectedUserId } = useUser();
 
+  const getChatMemberId = (chat: any) => {
+    return chat.members.find((member: string) => member !== currentUser.id);
+  };
+
+  const handleChatClick = (chat: any) => {
+    setSelectedChatId(chat.chatId);
+    setSelectedUserId(getChatMemberId(chat));
+  };
   const getChatDisplayData = (chat: any) => {
     if (userMap) {
-      // Determine the correct user to display based on whether current user is sender or recipient
-      const isSender = chat.senderId === currentUser.id;
-      const otherUserId = isSender ? chat.recipientId : chat.senderId;
-
-      return userMap[otherUserId];
+      const chatMemberId = getChatMemberId(chat);
+      return userMap[chatMemberId];
     }
     return null;
   };
@@ -30,7 +34,7 @@ const Chats = () => {
               key={chat.id}
               className="flex h-12 items-center gap-2"
               onClick={() => {
-                setSelectedChatId(chat.chatId);
+                handleChatClick(chat);
               }}
             >
               {chatData && (
