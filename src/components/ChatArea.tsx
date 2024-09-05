@@ -21,21 +21,44 @@ const ChatArea = ({ selectedChatId }: any) => {
         <h4>{selectedUser.userName}</h4>
       </div>
 
-      <div className="p-3">
+      <div className="flex flex-col gap-3 p-3">
         {/* // loop over messages and display content in order of timestamp */}
         {messages
           .sort((a, b) => a.timestamp - b.timestamp)
           .map((message) => {
             const user = userMap[message.userId];
             return (
-              <div key={message.id} className="flex gap-2">
+              <div key={message.id} className="flex gap-3">
                 <img
                   src={user.userImage}
                   alt={user.userName}
                   className="h-8 w-8 rounded-full"
                 />
-                <div>
-                  <p>{user.userName}</p>
+                <div className="flex flex-col">
+                  <div className="flex gap-2">
+                    <p>{user.userName}</p>
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs">
+                        {
+                          // display date of message
+                          new Date(message.timestamp).toLocaleString("en-US", {
+                            month: "numeric",
+                            day: "numeric",
+                            year: "numeric",
+                          })
+                        }
+                      </span>
+                      <span className="text-xs">
+                        {
+                          // display time of message
+                          new Date(message.timestamp).toLocaleString("en-US", {
+                            hour: "numeric",
+                            minute: "numeric",
+                          })
+                        }
+                      </span>
+                    </div>
+                  </div>
                   <p>{message.content}</p>
                 </div>
               </div>
