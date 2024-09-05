@@ -1,7 +1,7 @@
 import "./App.css";
 import ActiveWindow from "./components/ActiveWindow";
 import Header from "./components/Header";
-import Nav from "./components/Nav";
+import Groups from "./components/Groups";
 import { ChatProvider } from "./context/ChatContext";
 import { GroupProvider } from "./context/GroupContext";
 import { MessageProvider } from "./context/MessageContext";
@@ -13,10 +13,10 @@ function App() {
       <ChatProvider>
         <UserProvider>
           <MessageProvider>
-            <div className="">
+            <div className="flex h-screen max-h-screen w-screen flex-col">
               <Header />
-              <div className="flex h-screen w-screen">
-                <Nav />
+              <div className="flex flex-grow">
+                <Groups />
                 <ActiveWindow />
               </div>
             </div>
